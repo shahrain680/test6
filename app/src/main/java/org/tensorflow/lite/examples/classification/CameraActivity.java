@@ -19,6 +19,7 @@ package org.tensorflow.lite.examples.classification;
 import android.Manifest;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.hardware.camera2.CameraAccessException;
@@ -43,6 +44,7 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -87,20 +89,17 @@ public abstract class CameraActivity extends AppCompatActivity
       recognitionValueTextView,
       recognition1ValueTextView,
       recognition2ValueTextView;
-  protected TextView frameValueTextView,
-      cropValueTextView,
-      cameraResolutionTextView,
-      rotationTextView,
-      inferenceTimeTextView;
   protected ImageView bottomSheetArrowImageView;
   private ImageView plusImageView, minusImageView;
   private Spinner modelSpinner;
   private Spinner deviceSpinner;
   private TextView threadsTextView;
-
+  private Button captureButton;
   private Model model = Model.MODEL;
   private Device device = Device.CPU;
   private int numThreads = -1;
+  private static String topresultname;
+  private static float topresultpercentage;
 
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
@@ -125,6 +124,13 @@ public abstract class CameraActivity extends AppCompatActivity
     gestureLayout = findViewById(R.id.gesture_layout);
     sheetBehavior = BottomSheetBehavior.from(bottomSheetLayout);
     bottomSheetArrowImageView = findViewById(R.id.bottom_sheet_arrow);
+    captureButton = (Button) findViewById(R.id.capdata);
+    captureButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+          openDataReview();
+      }
+    });
 
     ViewTreeObserver vto = gestureLayout.getViewTreeObserver();
     vto.addOnGlobalLayoutListener(
@@ -173,6 +179,7 @@ public abstract class CameraActivity extends AppCompatActivity
           public void onSlide(@NonNull View bottomSheet, float slideOffset) {}
         });
 
+
     recognitionTextView = findViewById(R.id.detected_item);
     recognitionValueTextView = findViewById(R.id.detected_item_value);
     recognition1TextView = findViewById(R.id.detected_item1);
@@ -180,11 +187,8 @@ public abstract class CameraActivity extends AppCompatActivity
     recognition2TextView = findViewById(R.id.detected_item2);
     recognition2ValueTextView = findViewById(R.id.detected_item2_value);
 
-    frameValueTextView = findViewById(R.id.frame_info);
-    cropValueTextView = findViewById(R.id.crop_info);
-    cameraResolutionTextView = findViewById(R.id.view_info);
-    rotationTextView = findViewById(R.id.rotation_info);
-    inferenceTimeTextView = findViewById(R.id.inference_info);
+
+
 
     modelSpinner.setOnItemSelectedListener(this);
     deviceSpinner.setOnItemSelectedListener(this);
@@ -195,6 +199,15 @@ public abstract class CameraActivity extends AppCompatActivity
     model = Model.valueOf(modelSpinner.getSelectedItem().toString().toUpperCase());
     device = Device.valueOf(deviceSpinner.getSelectedItem().toString());
     numThreads = Integer.parseInt(threadsTextView.getText().toString().trim());
+  }
+
+  public void openDataReview() {
+    String resultname = topresultname;
+    float resultpercent = topresultpercentage;
+    Intent intent = new Intent(this, DataActivity.class);
+    intent.putExtra("result_name", resultname);
+    intent.putExtra("result_percent", resultpercent);
+    startActivity(intent);
   }
 
   protected int[] getRgbBytes() {
@@ -525,10 +538,16 @@ public abstract class CameraActivity extends AppCompatActivity
     if (results != null && results.size() >= 3) {
       Recognition recognition = results.get(0);
       if (recognition != null) {
-        if (recognition.getTitle() != null) recognitionTextView.setText(recognition.getTitle());
+        if (recognition.getTitle() != null) {
+          recognitionTextView.setText(recognition.getTitle());
+        topresultname = recognition.getTitle();}
+
         if (recognition.getConfidence() != null)
+        {
+            topresultpercentage = recognition.getConfidence();
           recognitionValueTextView.setText(
               String.format("%.2f", (100 * recognition.getConfidence())) + "%");
+        }
       }
 
       Recognition recognition1 = results.get(1);
@@ -549,25 +568,7 @@ public abstract class CameraActivity extends AppCompatActivity
     }
   }
 
-  protected void showFrameInfo(String frameInfo) {
-    frameValueTextView.setText(frameInfo);
-  }
 
-  protected void showCropInfo(String cropInfo) {
-    cropValueTextView.setText(cropInfo);
-  }
-
-  protected void showCameraResolution(String cameraInfo) {
-    cameraResolutionTextView.setText(cameraInfo);
-  }
-
-  protected void showRotationInfo(String rotation) {
-    rotationTextView.setText(rotation);
-  }
-
-  protected void showInference(String inferenceTime) {
-    inferenceTimeTextView.setText(inferenceTime);
-  }
 
   protected Model getModel() {
     return model;
@@ -651,4 +652,15 @@ public abstract class CameraActivity extends AppCompatActivity
   public void onNothingSelected(AdapterView<?> parent) {
     // Do nothing.
   }
+
+  public String getName() {
+    return topresultname;
+  }
+
+  public float getPercentage() {
+    return topresultpercentage;
+  }
+
 }
+
+
