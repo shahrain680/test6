@@ -12,13 +12,17 @@ public class Main3Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
-
+        DatabaseHelper db;
         Button button = findViewById(R.id.AIButton);
+
 
         button.setOnClickListener(v -> {
             Intent intent=new Intent(this, ClassifierActivity.class);
             startActivity(intent);
         });
+
+        db = new DatabaseHelper(this);
+        db.addUsers("test","test");
     }
 
 
