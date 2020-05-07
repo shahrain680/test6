@@ -14,6 +14,7 @@ public class Main3Activity extends AppCompatActivity {
         setContentView(R.layout.activity_main3);
         DatabaseHelper db;
         Button button = findViewById(R.id.AIButton);
+        Button login = findViewById(R.id.button2);
 
 
         button.setOnClickListener(v -> {
@@ -21,8 +22,11 @@ public class Main3Activity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        db = new DatabaseHelper(this);
-        db.addUsers("test","test");
+        login.setOnClickListener(v -> {
+            Intent intent=new Intent(this, CountActivity.class);
+            startActivity(intent);
+        });
+
     }
 
 

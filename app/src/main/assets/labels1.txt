@@ -3,3 +3,4 @@ Glass
 Metal
 Paper
 Plastic
+Waste

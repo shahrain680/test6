@@ -2,6 +2,7 @@ package org.tensorflow.lite.examples.classification;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -26,13 +27,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String sqlOmb = "CREATE TABLE object_material_bin(id INTEGER PRIMARY KEY AUTOINCREMENT, object_id INTEGER, material_id INTEGER, bin_id INTEGER, info_id INTEGER, FOREIGN KEY(object_id) REFERENCES objects(id), FOREIGN KEY(material_id) REFERENCES material(id), FOREIGN KEY(bin_id) REFERENCES bin(id), FOREIGN KEY(info_id) REFERENCES information(id))";
 
         sqLiteDatabase.execSQL(sqlUsers);
-        sqLiteDatabase.execSQL(sqlObjects);
-        sqLiteDatabase.execSQL(sqlMaterial);
-        sqLiteDatabase.execSQL(sqlInformation);
-        sqLiteDatabase.execSQL(sqlBin);
-        sqLiteDatabase.execSQL(sqlOmb);
 
 
+
+    }
+
+    public int getIds()
+    {
+        String selectQuery = "SELECT id FROM user_admin";
+        SQLiteDatabase database = this.getReadableDatabase();
+        Cursor c = database.rawQuery(selectQuery, null);
+        c.moveToFirst();
+        int total = c.getCount();
+        c.close();
+        return total;
     }
 
     public boolean addUsers(String username, String password) {

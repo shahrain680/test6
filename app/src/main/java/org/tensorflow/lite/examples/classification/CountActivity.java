@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class LoginActivity extends AppCompatActivity {
+public class CountActivity extends AppCompatActivity {
     DatabaseHelper db;
     Button b1;
     TextView t1;
