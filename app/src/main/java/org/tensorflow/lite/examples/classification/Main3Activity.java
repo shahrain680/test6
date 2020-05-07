@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import org.tensorflow.lite.examples.classification.ui.login.LoginActivity;
+
 public class Main3Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +25,7 @@ public class Main3Activity extends AppCompatActivity {
         });
 
         login.setOnClickListener(v -> {
-            Intent intent=new Intent(this, CountActivity.class);
+            Intent intent=new Intent(this, LoginActivity.class);
             startActivity(intent);
         });
 

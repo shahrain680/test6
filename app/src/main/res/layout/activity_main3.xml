@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="194dp"
         android:gravity="center"
-        android:text="FYP Prototype 2"
+        android:text="FYP Prototype 4"
         android:textColor="#FF5722"
         android:textSize="30sp" />
 

@@ -27,7 +27,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String sqlOmb = "CREATE TABLE object_material_bin(id INTEGER PRIMARY KEY AUTOINCREMENT, object_id INTEGER, material_id INTEGER, bin_id INTEGER, info_id INTEGER, FOREIGN KEY(object_id) REFERENCES objects(id), FOREIGN KEY(material_id) REFERENCES material(id), FOREIGN KEY(bin_id) REFERENCES bin(id), FOREIGN KEY(info_id) REFERENCES information(id))";
 
         sqLiteDatabase.execSQL(sqlUsers);
-
+        sqLiteDatabase.execSQL(sqlObjects);
+        sqLiteDatabase.execSQL(sqlMaterial);
+        sqLiteDatabase.execSQL(sqlInformation);
+        sqLiteDatabase.execSQL(sqlBin);
+        sqLiteDatabase.execSQL(sqlOmb);
 
 
     }
