@@ -25,7 +25,7 @@ public class Main3Activity extends AppCompatActivity {
         });
 
         login.setOnClickListener(v -> {
-            Intent intent=new Intent(this, LoginActivity.class);
+            Intent intent=new Intent(this, CountActivity.class);
             startActivity(intent);
         });
 

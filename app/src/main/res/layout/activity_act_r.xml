@@ -14,7 +14,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
 
-            android:text="LOGIN"
+            android:text="REGISTER"
             android:textSize="36sp"
             android:layout_marginTop="0.5in"/>
     </LinearLayout>
@@ -29,7 +29,7 @@
             android:layout_marginLeft="0.3in"
             android:layout_marginRight="0.3in"
             android:layout_marginTop="0.6in"
-            android:id="@+id/username"
+            android:id="@+id/usernamer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -40,7 +40,17 @@
             android:layout_marginLeft="0.3in"
             android:layout_marginRight="0.3in"
             android:layout_marginTop="0.1in"
-            android:id="@+id/password"
+            android:id="@+id/passwordr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:text="Password" />
+        <EditText
+            android:layout_marginLeft="0.3in"
+            android:layout_marginRight="0.3in"
+            android:layout_marginTop="0.1in"
+            android:id="@+id/cfmpasswordr"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -56,21 +66,13 @@
         <Button
             android:layout_marginTop="0.3in"
             android:layout_marginLeft="0.3in"
-            android:layout_marginRight="10dp"
-            android:id="@+id/actlbutton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Login" />
-
-        <Button
-            android:layout_marginTop="0.3in"
             android:layout_marginRight="0.3in"
-            android:id="@+id/actrbutton"
+            android:id="@+id/actrbuttonr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Register" />
+
     </LinearLayout>
 
 

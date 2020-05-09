@@ -33,18 +33,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(sqlBin);
         sqLiteDatabase.execSQL(sqlOmb);
 
-
     }
 
-    public int getIds()
+    public boolean verifyUser(String user, String pass)
     {
-        String selectQuery = "SELECT id FROM user_admin";
+        String selectQuery = String.format("SELECT id FROM user_admin;");
         SQLiteDatabase database = this.getReadableDatabase();
         Cursor c = database.rawQuery(selectQuery, null);
         c.moveToFirst();
         int total = c.getCount();
         c.close();
-        return total;
+
+        if (total == 1) {
+            return true;
+
+        } else {
+            return false;
+        }
     }
 
     public boolean addUsers(String username, String password) {
