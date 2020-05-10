@@ -1,22 +1,19 @@
 package org.tensorflow.lite.examples.classification;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 
-import org.tensorflow.lite.examples.classification.ui.login.LoginActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
-public class Main3Activity extends AppCompatActivity {
+public class Main3ActivityLogged extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main3);
+        setContentView(R.layout.activity_main3_logged);
         DatabaseHelper db;
         Button button = findViewById(R.id.AIButton);
-        Button login = findViewById(R.id.button2);
+        Button logout = findViewById(R.id.logout);
 
 
         button.setOnClickListener(v -> {
@@ -24,8 +21,8 @@ public class Main3Activity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        login.setOnClickListener(v -> {
-            Intent intent=new Intent(this, ActLActivity.class);
+        logout.setOnClickListener(v -> {
+            Intent intent=new Intent(this, Main3Activity.class);
             startActivity(intent);
         });
 

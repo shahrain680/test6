@@ -2,6 +2,7 @@ package org.tensorflow.lite.examples.classification;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,7 +14,7 @@ public class ActRActivity extends AppCompatActivity {
     DatabaseHelper db;
     EditText t1,t2,t3;
     Button b5;
-    String u1,u2;
+    String u1,u2,u3;
     boolean status;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,28 +26,24 @@ public class ActRActivity extends AppCompatActivity {
         t3 = findViewById(R.id.cfmpasswordr);
         b5 = findViewById(R.id.actrbuttonr);
 
-        status = false;
         u1 = t1.getText().toString();
         u1 = t1.getText().toString();
 
-        if (t1.length() > 1) {
-            status = true;
-        }
-
-        if (t2.equals(t3)) {
-            status = true;
-        }
 
         b5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                if (status == true) {
-                    t1.setText(u1);
-                    t1.setText(u2);
-                    Toast.makeText(ActRActivity.this, "Register Successful!", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(ActRActivity.this, "Invalid Username or Password!", Toast.LENGTH_SHORT).show();
+                u1 = t1.getText().toString();
+                u2 = t2.getText().toString();
+                u3 = t3.getText().toString();
+
+                if (u1.length() > 1 && u2.equals(u3)) {
+                    db.addUsers(u1,u2);
+                    Toast.makeText(ActRActivity.this, "User registered!", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(ActRActivity.this, "Enter the values correctly!", Toast.LENGTH_SHORT).show();
                 }
             }
         });

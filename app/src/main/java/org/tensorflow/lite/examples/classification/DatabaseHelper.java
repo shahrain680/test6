@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
 
 import androidx.annotation.Nullable;
 
@@ -37,7 +38,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public boolean verifyUser(String user, String pass)
     {
-        String selectQuery = String.format("SELECT id FROM user_admin;");
+        /*String selectQuery = String.format("SELECT * FROM user_admin WHERE user_name=\"%s\" AND user_password=\"%s\";",user,pass);
         SQLiteDatabase database = this.getReadableDatabase();
         Cursor c = database.rawQuery(selectQuery, null);
         c.moveToFirst();
@@ -49,37 +50,71 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         } else {
             return false;
+        }*/
+
+        String sql = "Select count(*) from user_admin where user_name='" + user + "' and user_password='" + pass + "'";
+        SQLiteStatement statement = getReadableDatabase().compileStatement(sql);
+        long l = statement.simpleQueryForLong();
+        statement.close();
+
+        if (l == 1) {
+            return true;
+
+        } else {
+            return false;
         }
     }
 
     public boolean addUsers(String username, String password) {
         SQLiteDatabase db = getWritableDatabase();
-        String sqlString = String.format("INSERT INTO user_admin(user_name, user_password) VALUES(\"" + username + "\",\"" + password +"\");");
+        /*String sqlString = String.format("INSERT INTO user_admin(user_name, user_password) VALUES(\"" + username + "\",\"" + password +"\");");
         db.execSQL(sqlString);
+        db.close();
+        return true;*/
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("user_name", username);
+        contentValues.put("user_password", password);
+        db.insert("user_admin", null, contentValues);
         db.close();
         return true;
     }
 
     public boolean addObjects(String material) {
         SQLiteDatabase db = getWritableDatabase();
-        String sqlString = String.format("INSERT INTO objects(object_material) VALUES(\"" + material + "\");");
+        /*String sqlString = String.format("INSERT INTO objects(object_material) VALUES(\"" + material + "\");");
         db.execSQL(sqlString);
+        db.close();
+        return true;*/
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("object_material", material);
+        db.insert("objects", null, contentValues);
         db.close();
         return true;
     }
 
     public boolean addMaterial(String material) {
         SQLiteDatabase db = getWritableDatabase();
-        String sqlString = String.format("INSERT INTO material(material_name) VALUES(\"" + material + "\");");
+        /*String sqlString = String.format("INSERT INTO material(material_name) VALUES(\"" + material + "\");");
         db.execSQL(sqlString);
+        db.close();
+        return true;*/
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("material_name", material);
+        db.insert("material", null, contentValues);
         db.close();
         return true;
     }
 
     public boolean addBin(String bin) {
         SQLiteDatabase db = getWritableDatabase();
-        String sqlString = String.format("INSERT INTO bin(bin_name) VALUES(\"" + bin + "\");");
+        /*String sqlString = String.format("INSERT INTO bin(bin_name) VALUES(\"" + bin + "\");");
         db.execSQL(sqlString);
+        db.close();
+        return true;*/
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("bin_name", bin);
+        db.insert("bin", null, contentValues);
         db.close();
         return true;
     }

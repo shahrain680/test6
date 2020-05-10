@@ -10,20 +10,20 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class CountActivity extends AppCompatActivity {
+public class ActLActivity extends AppCompatActivity {
     DatabaseHelper db;
     Button b1,b2;
     EditText t1,t2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_count);
+        setContentView(R.layout.activity_act_l);
 
         db = new DatabaseHelper(this);
-        b1 = findViewById(R.id.actlbutton);
-        b2 = findViewById(R.id.actrbutton);
-        t1 = findViewById(R.id.username);
-        t2 = findViewById(R.id.password);
+        b1 = findViewById(R.id.actlbuttonl);
+        b2 = findViewById(R.id.actrbuttonl);
+        t1 = findViewById(R.id.usernamel);
+        t2 = findViewById(R.id.passwordl);
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,13 +34,14 @@ public class CountActivity extends AppCompatActivity {
 
                 if (db.verifyUser(user, pass)) {
 
-                    Intent intent = new Intent(CountActivity.this, Main3Activity.class);
+                    Intent intent = new Intent(ActLActivity.this, Main3ActivityLogged.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
-                    Toast.makeText(CountActivity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ActLActivity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
 
 
                 } else {
-                    Toast.makeText(CountActivity.this, "Invalid Username or Password!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ActLActivity.this, "Invalid Username or Password!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -49,7 +50,7 @@ public class CountActivity extends AppCompatActivity {
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(CountActivity.this, ActRActivity.class);
+                Intent intent = new Intent(ActLActivity.this, ActRActivity.class);
                 startActivity(intent);
             }
         });

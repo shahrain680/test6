@@ -17,13 +17,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.ImageClassification">
         <activity android:name=".ActRActivity"></activity>
-        <activity
-            android:name=".ui.login.LoginActivity"
-            android:label="@string/title_activity_login" />
-        <activity
-            android:name=".ui.login.LoginActivity2"
-            android:label="@string/title_activity_login2" />
-        <activity android:name=".CountActivity" />
+        <activity android:name=".ActLActivity"></activity>
+        <activity android:name=".Main3ActivityLogged"></activity>
         <activity android:name=".SuccessActivity" />
         <activity android:name=".DataActivity" />
         <activity android:name=".ClassifierActivity" />
