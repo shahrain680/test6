@@ -4,58 +4,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/two">
+
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textView9"
         android:layout_width="match_parent"
-        android:layout_height="194dp"
-        android:gravity="center"
-        android:text="FYP Prototype 4"
-        android:textColor="#FF5722"
-        android:textSize="30sp" />
+        android:layout_height="416dp"
+        android:text="TextView" />
 
     <Button
         android:id="@+id/AIButton"
-        android:layout_width="361dp"
-        android:layout_height="75dp"
+        android:layout_width="205dp"
+        android:layout_height="65dp"
         android:layout_gravity="center"
-        android:background="#FF9800"
-        android:onClick="aiClick"
+        android:background="#00FF9800"
+        android:fontFamily="@font/dancing_script"
         android:gravity="center"
+        android:onClick="aiClick"
         android:text="AI"
-        android:textColor="#FFFFFF"
+        android:textColor="#2C2A2A"
         android:textSize="30sp" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
-        android:layout_height="101dp"
+        android:layout_height="52dp"
         android:text="TextView"
         android:visibility="invisible" />
 
     <Button
         android:id="@+id/button7"
-        android:layout_width="361dp"
-        android:layout_height="75dp"
+        android:layout_width="221dp"
+        android:layout_height="64dp"
         android:layout_gravity="center"
-        android:background="#808080"
+        android:background="#00808080"
+        android:fontFamily="@font/dancing_script"
         android:text="Login to view data"
-        android:textColor="#FFFFFF"
+        android:textAlignment="center"
+        android:textColor="#2C2A2A"
         android:textSize="24sp" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="match_parent"
-        android:layout_height="149dp"
-        android:text="TextView"
-        android:visibility="invisible" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#FF9800"
+        android:background="#FFFFFF"
         android:text="Log In" />
 
 </LinearLayout>
