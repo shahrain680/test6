@@ -23,7 +23,6 @@ public class ActLActivity extends AppCompatActivity {
 
         db = new DatabaseHelper(this);
         b1 = findViewById(R.id.actlbuttonl);
-        b2 = findViewById(R.id.actrbuttonl);
         t1 = findViewById(R.id.usernamel);
         t2 = findViewById(R.id.passwordl);
         loggedin = false;
@@ -49,15 +48,6 @@ public class ActLActivity extends AppCompatActivity {
                     loggedin = false;
                     Toast.makeText(ActLActivity.this, "Invalid Username or Password!", Toast.LENGTH_SHORT).show();
                 }
-            }
-        });
-
-
-        b2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ActLActivity.this, ActRActivity.class);
-                startActivity(intent);
             }
         });
 
