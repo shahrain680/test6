@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class ActLActivity extends AppCompatActivity {
+    private static String usern;
     DatabaseHelper db;
     Button b1,b2;
     EditText t1,t2;
@@ -25,11 +26,13 @@ public class ActLActivity extends AppCompatActivity {
         t1 = findViewById(R.id.usernamel);
         t2 = findViewById(R.id.passwordl);
 
+
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String user = t1.getText().toString();
                 String pass = t2.getText().toString();
+                usern = t1.getText().toString();
 
 
                 if (db.verifyUser(user, pass)) {
@@ -54,5 +57,11 @@ public class ActLActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
+
+    public static String getUser() {
+        return usern;
+    }
+
 }

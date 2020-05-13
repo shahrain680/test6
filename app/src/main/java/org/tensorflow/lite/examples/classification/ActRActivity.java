@@ -18,7 +18,7 @@ public class ActRActivity extends AppCompatActivity {
     boolean status;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-       super.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_act_r);
         db = new DatabaseHelper(this);
         t1 = findViewById(R.id.usernamer);

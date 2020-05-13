@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class DataActivity extends AppCompatActivity {
@@ -15,22 +16,35 @@ public class DataActivity extends AppCompatActivity {
             confidenceTextView;
     public String material;
     public float confidence;
+    DatabaseHelper db;
+    public int userident;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.data_review);
-        DatabaseHelper db;
         db = new DatabaseHelper(this);
         button = findViewById(R.id.addData);
+
         materialTextView = findViewById(R.id.materialvalue);
         confidenceTextView = findViewById(R.id.confidencevalue);
+
         Intent intent= getIntent();
         material = intent.getStringExtra("result_name");
         confidence = intent.getFloatExtra("result_percent",2);
+
         materialTextView.setText(material);
         confidenceTextView.setText(String.format("%.2f", (100 * confidence)) + "%");
+        material = material.toLowerCase();
 
-        button = (Button) findViewById(R.id.addData);
+        userident = Integer.parseInt(db.getUserNo(ActLActivity.getUser()));
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                db.addObjects(material,userident);
+                Toast.makeText(DataActivity.this, "Object Added!", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
