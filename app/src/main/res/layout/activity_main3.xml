@@ -35,18 +35,6 @@
         android:visibility="invisible" />
 
     <Button
-        android:id="@+id/button7"
-        android:layout_width="221dp"
-        android:layout_height="64dp"
-        android:layout_gravity="center"
-        android:background="#00808080"
-        android:fontFamily="@font/shortbaby"
-        android:text="Login to view data"
-        android:textAlignment="center"
-        android:textColor="#2C2A2A"
-        android:textSize="15sp" />
-
-    <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

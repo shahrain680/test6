@@ -56,21 +56,13 @@
         <Button
             android:layout_marginTop="0.3in"
             android:layout_marginLeft="0.3in"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="0.3in"
             android:id="@+id/actlbuttonl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Login" />
 
-        <Button
-            android:layout_marginTop="0.3in"
-            android:layout_marginRight="0.3in"
-            android:id="@+id/actrbuttonl"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Register" />
     </LinearLayout>
 
 

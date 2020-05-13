@@ -29,16 +29,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         String addMaterialColumn = String.format("INSERT INTO material(material_name) VALUES(\"cardboard\"),(\"glass\"),(\"metal\"),(\"paper\"),(\"plastic\"),(\"waste\");");
         String addBinColumn = String.format("INSERT INTO bin(bin_name) VALUES(\"cardboard\"),(\"glass\"),(\"metal\"),(\"paper\"),(\"plastic\"),(\"waste\");");
-
+        String account = String.format("INSERT INTO user_admin(user_name, user_password) VALUES (\"gf\",\"gf\")");
         sqLiteDatabase.execSQL(sqlUsers);
         sqLiteDatabase.execSQL(sqlObjects);
         sqLiteDatabase.execSQL(sqlMaterial);
         sqLiteDatabase.execSQL(sqlInformation);
         sqLiteDatabase.execSQL(sqlBin);
         sqLiteDatabase.execSQL(sqlOmb);
-
         sqLiteDatabase.execSQL(addMaterialColumn);
         sqLiteDatabase.execSQL(addBinColumn);
+        sqLiteDatabase.execSQL(account);
 
     }
 
@@ -71,29 +71,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public boolean addUsers(String username, String password) {
-        SQLiteDatabase db = getWritableDatabase();
-        /*String sqlString = String.format("INSERT INTO user_admin(user_name, user_password) VALUES(\"" + username + "\",\"" + password +"\");");
-        db.execSQL(sqlString);
-        db.close();
-        return true;*/
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("user_name", username);
-        contentValues.put("user_password", password);
-        db.insert("user_admin", null, contentValues);
-        db.close();
-        return true;
-    }
 
-    public boolean addObjects(String material, int userid) {
+    public boolean addObjects(String material) {
         SQLiteDatabase db = getWritableDatabase();
         /*String sqlString = String.format("INSERT INTO objects(object_material) VALUES(\"" + material + "\");");
         db.execSQL(sqlString);
         db.close();
         return true;*/
         ContentValues contentValues = new ContentValues();
-        contentValues.put("object_material", material);
-        contentValues.put("user_id", userid);
+        if (ActLActivity.getLoginStatus() == true) {
+            contentValues.put("object_material", material);
+            contentValues.put("user_id", 1);
+        }
+
+        else {
+            contentValues.put("object_material", material);
+        }
         db.insert("objects", null, contentValues);
         db.close();
         return true;

@@ -17,7 +17,6 @@ public class DataActivity extends AppCompatActivity {
     public String material;
     public float confidence;
     DatabaseHelper db;
-    public int userident;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,12 +35,11 @@ public class DataActivity extends AppCompatActivity {
         confidenceTextView.setText(String.format("%.2f", (100 * confidence)) + "%");
         material = material.toLowerCase();
 
-        userident = Integer.parseInt(db.getUserNo(ActLActivity.getUser()));
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                db.addObjects(material,userident);
+                db.addObjects(material);
                 Toast.makeText(DataActivity.this, "Object Added!", Toast.LENGTH_SHORT).show();
             }
         });

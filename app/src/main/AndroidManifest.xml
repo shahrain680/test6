@@ -17,7 +17,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.ImageClassification">
         <activity android:name=".NoAdditionActivity"></activity>
-        <activity android:name=".ActRActivity" />
         <activity android:name=".ActLActivity" />
         <activity android:name=".Main3ActivityLogged" />
         <activity android:name=".SuccessActivity" />
