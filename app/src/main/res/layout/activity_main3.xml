@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/five">
+    android:background="@drawable/six">
 
 
     <TextView
@@ -23,7 +23,7 @@
         android:fontFamily="@font/shortbaby"
         android:gravity="center"
         android:onClick="aiClick"
-        android:text="AI"
+        android:text="Scan Item"
         android:textColor="#2C2A2A"
         android:textSize="30sp" />
 
@@ -34,17 +34,7 @@
         android:text="TextView"
         android:visibility="invisible" />
 
-    <Button
-        android:id="@+id/button7"
-        android:layout_width="221dp"
-        android:layout_height="64dp"
-        android:layout_gravity="center"
-        android:background="#00808080"
-        android:fontFamily="@font/shortbaby"
-        android:text="Login to view data"
-        android:textAlignment="center"
-        android:textColor="#2C2A2A"
-        android:textSize="15sp" />
+
 
     <Button
         android:id="@+id/button2"
