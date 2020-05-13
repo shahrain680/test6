@@ -128,7 +128,12 @@ public abstract class CameraActivity extends AppCompatActivity
     captureButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-          openDataReview();
+          if (ActLActivity.getLoginStatus() == true) {
+            openDataReview();
+          }
+          else {
+            openNoAddition();
+          }
       }
     });
 
@@ -207,6 +212,11 @@ public abstract class CameraActivity extends AppCompatActivity
     Intent intent = new Intent(this, DataActivity.class);
     intent.putExtra("result_name", resultname);
     intent.putExtra("result_percent", resultpercent);
+    startActivity(intent);
+  }
+
+  public void openNoAddition() {
+    Intent intent = new Intent(this, NoAdditionActivity.class);
     startActivity(intent);
   }
 

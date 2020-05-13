@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 public class ActLActivity extends AppCompatActivity {
     private static String usern;
+    private static boolean loggedin;
     DatabaseHelper db;
     Button b1,b2;
     EditText t1,t2;
@@ -25,7 +26,7 @@ public class ActLActivity extends AppCompatActivity {
         b2 = findViewById(R.id.actrbuttonl);
         t1 = findViewById(R.id.usernamel);
         t2 = findViewById(R.id.passwordl);
-
+        loggedin = false;
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,10 +41,12 @@ public class ActLActivity extends AppCompatActivity {
                     Intent intent = new Intent(ActLActivity.this, Main3ActivityLogged.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
+                    loggedin = true;
                     Toast.makeText(ActLActivity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
 
 
                 } else {
+                    loggedin = false;
                     Toast.makeText(ActLActivity.this, "Invalid Username or Password!", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -63,5 +66,14 @@ public class ActLActivity extends AppCompatActivity {
     public static String getUser() {
         return usern;
     }
+
+    public static boolean getLoginStatus() {
+        return loggedin;
+    }
+
+    public static void logout(){
+        loggedin = false;
+    }
+
 
 }

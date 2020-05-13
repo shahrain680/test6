@@ -22,6 +22,7 @@ public class Main3ActivityLogged extends AppCompatActivity {
         });
 
         logout.setOnClickListener(v -> {
+            ActLActivity.logout();
             Intent intent=new Intent(this, Main3Activity.class);
             startActivity(intent);
         });

@@ -16,9 +16,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.ImageClassification">
-        <activity android:name=".ActRActivity"></activity>
-        <activity android:name=".ActLActivity"></activity>
-        <activity android:name=".Main3ActivityLogged"></activity>
+        <activity android:name=".NoAdditionActivity"></activity>
+        <activity android:name=".ActRActivity" />
+        <activity android:name=".ActLActivity" />
+        <activity android:name=".Main3ActivityLogged" />
         <activity android:name=".SuccessActivity" />
         <activity android:name=".DataActivity" />
         <activity android:name=".ClassifierActivity" />
