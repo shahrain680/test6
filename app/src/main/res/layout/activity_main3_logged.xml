@@ -4,15 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/login">
 
-    <TextView
+   /<TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="194dp"
+        android:fontFamily="@font/shortbaby"
         android:gravity="center"
-        android:text="FYP Prototype 4"
-        android:textColor="#FF5722"
+        android:text="Hello Admin"
+        android:textColor="#2C2A2A"
         android:textSize="30sp" />
 
     <Button
@@ -20,11 +22,11 @@
         android:layout_width="361dp"
         android:layout_height="75dp"
         android:layout_gravity="center"
-        android:background="#FF9800"
+        android:background="#00FF9800"
         android:onClick="aiClick"
         android:gravity="center"
-        android:text="AI"
-        android:textColor="#FFFFFF"
+        android:text="Scan item"
+        android:textColor="#2C2A2A"
         android:textSize="30sp" />
 
     <TextView
@@ -39,9 +41,9 @@
         android:layout_width="361dp"
         android:layout_height="75dp"
         android:layout_gravity="center"
-        android:background="#FF9800"
-        android:text="Data on AI"
-        android:textColor="#FFFFFF"
+        android:background="#00FF9800"
+        android:text="Data on materials"
+        android:textColor="#2C2A2A"
         android:textSize="24sp" />
 
     <TextView
@@ -55,7 +57,7 @@
         android:id="@+id/logout"
         android:layout_width="69dp"
         android:layout_height="25dp"
-        android:background="#FF9800"
+        android:background="#FFFFFF"
         android:text="Log Out" />
 
 </LinearLayout>
