@@ -113,6 +113,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/aovelsansrounded"
             android:text="CAPTURE DATA" />
     </LinearLayout>
 
@@ -214,6 +215,7 @@
             android:layout_marginTop="10dp"
             android:layout_alignParentRight="true"
             android:entries="@array/tfe_ic_devices"
+
             android:prompt="@string/tfe_ic_device" />
     </RelativeLayout>
 </LinearLayout>

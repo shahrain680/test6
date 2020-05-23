@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/review">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,7 +18,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:background="#00FF9800"
-            android:fontFamily="@font/aovelsansrounded"
+            android:fontFamily="@font/nevisbold"
             android:text="Data Review"
             android:textSize="30sp" />
     </LinearLayout>
@@ -35,7 +36,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:background="#00FF9800"
-            android:fontFamily="@font/aovelsansrounded"
+            android:fontFamily="@font/nevisbold"
             android:text="Material"
             android:textSize="30sp" />
 
@@ -45,6 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:fontFamily="@font/nevisbold"
             android:textSize="30sp" />
     </LinearLayout>
 
@@ -61,7 +63,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:background="#00FF9800"
-            android:fontFamily="@font/aovelsansrounded"
+            android:fontFamily="@font/nevisbold"
             android:text="Confidence"
             android:textSize="30sp" />
 
@@ -88,7 +90,7 @@
             android:id="@+id/addData"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/nevisbold"
+            android:fontFamily="@font/aovelsansrounded"
             android:text="Add data" />
     </LinearLayout>
 
